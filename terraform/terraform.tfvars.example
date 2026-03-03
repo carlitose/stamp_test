@@ -1,8 +1,8 @@
 # Required: Your verified SES sender email
 sender_email = "your-email@example.com"
 
-# Optional: AWS region (default: eu-south-1)
-# aws_region = "eu-south-1"
+# Optional: AWS region (default: eu-west-3)
+# aws_region = "eu-west-3"
 
 # Optional: Project name for resource naming (default: csv-processor)
 # project_name = "csv-processor"

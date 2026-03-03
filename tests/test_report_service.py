@@ -7,10 +7,10 @@ from moto import mock_aws
 
 @mock_aws
 def test_save_report_structure():
-    s3 = boto3.client("s3", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
     s3.create_bucket(
         Bucket="test-bucket",
-        CreateBucketConfiguration={"LocationConstraint": "eu-south-1"},
+        CreateBucketConfiguration={"LocationConstraint": "eu-west-3"},
     )
 
     import report_service
@@ -41,10 +41,10 @@ def test_save_report_structure():
 
 @mock_aws
 def test_save_report_empty_results():
-    s3 = boto3.client("s3", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
     s3.create_bucket(
         Bucket="test-bucket",
-        CreateBucketConfiguration={"LocationConstraint": "eu-south-1"},
+        CreateBucketConfiguration={"LocationConstraint": "eu-west-3"},
     )
 
     import report_service

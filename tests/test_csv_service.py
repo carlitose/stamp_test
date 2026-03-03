@@ -5,10 +5,10 @@ from moto import mock_aws
 
 @mock_aws
 def test_download_csv():
-    s3 = boto3.client("s3", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
     s3.create_bucket(
         Bucket="test-bucket",
-        CreateBucketConfiguration={"LocationConstraint": "eu-south-1"},
+        CreateBucketConfiguration={"LocationConstraint": "eu-west-3"},
     )
     s3.put_object(Bucket="test-bucket", Key="uploads/data.csv", Body=b"1,2,3,a@b.com\n")
 
@@ -20,10 +20,10 @@ def test_download_csv():
 
 @mock_aws
 def test_download_csv_file_not_found():
-    s3 = boto3.client("s3", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
     s3.create_bucket(
         Bucket="test-bucket",
-        CreateBucketConfiguration={"LocationConstraint": "eu-south-1"},
+        CreateBucketConfiguration={"LocationConstraint": "eu-west-3"},
     )
 
     from csv_service import download_csv

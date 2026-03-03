@@ -6,10 +6,10 @@ from moto import mock_aws
 
 @mock_aws
 def test_move_to_processed():
-    s3 = boto3.client("s3", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
     s3.create_bucket(
         Bucket="test-bucket",
-        CreateBucketConfiguration={"LocationConstraint": "eu-south-1"},
+        CreateBucketConfiguration={"LocationConstraint": "eu-west-3"},
     )
     s3.put_object(Bucket="test-bucket", Key="uploads/data.csv", Body=b"test content")
 
@@ -31,10 +31,10 @@ def test_move_to_processed():
 
 @mock_aws
 def test_file_exists_true():
-    s3 = boto3.client("s3", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
     s3.create_bucket(
         Bucket="test-bucket",
-        CreateBucketConfiguration={"LocationConstraint": "eu-south-1"},
+        CreateBucketConfiguration={"LocationConstraint": "eu-west-3"},
     )
     s3.put_object(Bucket="test-bucket", Key="uploads/data.csv", Body=b"content")
 
@@ -47,10 +47,10 @@ def test_file_exists_true():
 
 @mock_aws
 def test_file_exists_false():
-    s3 = boto3.client("s3", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
     s3.create_bucket(
         Bucket="test-bucket",
-        CreateBucketConfiguration={"LocationConstraint": "eu-south-1"},
+        CreateBucketConfiguration={"LocationConstraint": "eu-west-3"},
     )
 
     import file_service

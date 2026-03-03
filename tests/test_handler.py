@@ -21,7 +21,7 @@ def _make_s3_event(bucket: str, key: str) -> dict:
 def _setup_bucket(s3, bucket="test-bucket"):
     s3.create_bucket(
         Bucket=bucket,
-        CreateBucketConfiguration={"LocationConstraint": "eu-south-1"},
+        CreateBucketConfiguration={"LocationConstraint": "eu-west-3"},
     )
 
 
@@ -43,8 +43,8 @@ def _reload_modules():
 
 @mock_aws
 def test_happy_path():
-    s3 = boto3.client("s3", region_name="eu-south-1")
-    ses = boto3.client("ses", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
+    ses = boto3.client("ses", region_name="eu-west-3")
     _setup_bucket(s3)
     ses.verify_email_identity(EmailAddress="sender@example.com")
 
@@ -74,8 +74,8 @@ def test_happy_path():
 
 @mock_aws
 def test_partial_failures():
-    s3 = boto3.client("s3", region_name="eu-south-1")
-    ses = boto3.client("ses", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
+    ses = boto3.client("ses", region_name="eu-west-3")
     _setup_bucket(s3)
     ses.verify_email_identity(EmailAddress="sender@example.com")
 
@@ -98,7 +98,7 @@ def test_partial_failures():
 
 @mock_aws
 def test_empty_csv():
-    s3 = boto3.client("s3", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
     _setup_bucket(s3)
 
     s3.put_object(Bucket="test-bucket", Key="uploads/empty.csv", Body=b"")
@@ -116,7 +116,7 @@ def test_empty_csv():
 
 @mock_aws
 def test_non_csv_file():
-    s3 = boto3.client("s3", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
     _setup_bucket(s3)
 
     handler = _reload_modules()
@@ -137,7 +137,7 @@ def test_wrong_prefix():
 
 @mock_aws
 def test_idempotency_file_already_moved():
-    s3 = boto3.client("s3", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
     _setup_bucket(s3)
     # Don't put any file — simulate already-moved scenario
 
@@ -150,8 +150,8 @@ def test_idempotency_file_already_moved():
 
 @mock_aws
 def test_header_row_skipped():
-    s3 = boto3.client("s3", region_name="eu-south-1")
-    ses = boto3.client("ses", region_name="eu-south-1")
+    s3 = boto3.client("s3", region_name="eu-west-3")
+    ses = boto3.client("ses", region_name="eu-west-3")
     _setup_bucket(s3)
     ses.verify_email_identity(EmailAddress="sender@example.com")
 

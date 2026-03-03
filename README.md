@@ -57,7 +57,7 @@ pip install -r requirements-dev.txt
 Before deploying, verify your sender email in the AWS SES console:
 
 ```bash
-aws ses verify-email-identity --email-address your-email@example.com --region eu-south-1
+aws ses verify-email-identity --email-address your-email@example.com --region eu-west-3
 ```
 
 Check your inbox and click the verification link.
@@ -204,4 +204,4 @@ csv-processor-pipeline/
 | Variable | Description | Source |
 |----------|-------------|--------|
 | `SENDER_EMAIL` | Verified SES sender email | GitHub Secret → Terraform var → Lambda env |
-| `AWS_REGION` | AWS region (default: eu-south-1) | Lambda env |
+| `AWS_REGION` | AWS region (default: eu-west-3) | Lambda env |

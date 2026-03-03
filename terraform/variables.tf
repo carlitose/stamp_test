@@ -6,7 +6,7 @@ variable "sender_email" {
 variable "aws_region" {
   description = "AWS region for all resources"
   type        = string
-  default     = "eu-south-1"
+  default     = "eu-west-3"
 }
 
 variable "project_name" {

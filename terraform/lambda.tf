@@ -85,7 +85,6 @@ resource "aws_lambda_function" "csv_processor" {
   environment {
     variables = {
       SENDER_EMAIL = var.sender_email
-      AWS_REGION   = var.aws_region
     }
   }
 }
