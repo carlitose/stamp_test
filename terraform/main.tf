@@ -1,6 +1,12 @@
 terraform {
   required_version = ">= 1.5"
 
+  backend "s3" {
+    bucket = "csv-processor-tfstate"
+    key    = "terraform.tfstate"
+    region = "eu-west-3"
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
