@@ -33,7 +33,7 @@ Thumbs.db
 *.tfstate.*
 *.tfvars
 !terraform.tfvars.example
-.terraform.lock.hcl
+# .terraform.lock.hcl is committed per Terraform best practices
 
 # Testing
 .pytest_cache/
